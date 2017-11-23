@@ -1,0 +1,42 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ 	 <script type="text/javascript" src="jquery-2.1.4/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="jQuerymobile/jquery.mobile-1.4.5.min.css"> -->
+<!-- <script type="text/javascript" src="jQuerymobile/jquery.mobile-1.4.5.min.js"></script> -->
+<style>
+</style>
+<script>
+window.onload=function(){
+	var oBtn=document.getElementById('btn1');
+	var oDiv=document.getElementById('div1');
+	oBtn.onclick=function(){
+		var xmlhttp;
+		if (window.XMLHttpRequest)
+		{
+			//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+			xmlhttp=new XMLHttpRequest();
+		}
+		else
+		{
+			// IE6, IE5 浏览器执行代码
+			xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function()
+		{
+			if (xmlhttp.readyState==4 && xmlhttp.status==200)
+			{
+				oDiv.innerHTML=xmlhttp.responseText;
+			}
+		}
+		xmlhttp.open("GET","ajax.txt?name="+new Date(),true);
+		xmlhttp.send();
+		}
+}
+</script>
+</head>
+<body>
+	<button id="btn1">按下</button>
+	<div id="div1"></div>	
+</body>
+</html>
